@@ -1,5 +1,20 @@
 {
   "expo": {
-    "sdkVersion": "15.0.0"
+    "name": "ドゥ・トゥール シャトルバス時刻表",
+    "description": "東京都中央区のマンション「ドゥ・トゥール(Deux Tours)」と新橋駅間を結ぶシャトルバスの時刻表を手軽にチェックできるアプリです",
+    "slug": "bus-time-table-deux-tours",
+    "privacy": "public",
+    "sdkVersion": "15.0.0",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "primaryColor": "#cccccc",
+    "icon": "./assets/icons/app.png",
+    "loading": {
+      "icon": "https://s3.amazonaws.com/exp-brand-assets/ExponentEmptyManifest_192.png",
+      "hideExponentText": false
+    },
+    ios: {
+      bundleIdentifier: "me.noriaki.apps.ios.bus-time-table-deux-tours"
+    }
   }
 }
