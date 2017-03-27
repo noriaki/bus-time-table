@@ -23,7 +23,7 @@
     "expo": "^15.1.0",
     "moment": "^2.18.1",
     "react": "~15.4.0",
-    "react-native": "0.42.3",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-15.0.0.tar.gz",
     "react-native-grid-component": "^1.0.6",
     "react-native-scrollable-tab-view": "^0.7.3"
   }
