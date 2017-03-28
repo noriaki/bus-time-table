@@ -5,7 +5,7 @@ import Grid from 'react-native-grid-component';
 const TimeTable = ({ data }) => {
   const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
   const dataSource = ds.cloneWithRows(data);
-  return <ListView {...{ dataSource, renderRow, renderSeparator }} />;
+  return <ListView scrollEnabled={false} {...{ dataSource, renderRow, renderSeparator }} />;
 };
 
 const renderRow = (rowData, _, rowID) => (
