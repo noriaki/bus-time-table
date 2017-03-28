@@ -9,13 +9,14 @@ import BoardingTimer from './components/BoardingTimer';
 import timeTableData from './data/timetable.json';
 
 const App = () => (
-  <ScrollableTabView style={styles.tabbar} {...tabBarStyleProps}>
-    <View key="home" tabLabel="マンション発">
-      {/* <BoardingTimer current={new Date()} /> */}
+  <ScrollableTabView style={styles.tabBar} {...tabBarStyleProps}>
+    <View key="home" style={styles.tabContent} tabLabel="マンション発">
+      <BoardingTimer remaining={moment.utc({ year: 1970, hour: 1, minute: 13, second: 52 })} />
       <TimeTable data={timeTableData.homeToStation} />
       <UpdateDate date={momentFromVersion(timeTableData.version)} />
     </View>
-    <View key="station" tabLabel="新橋駅発">
+    <View key="station" style={styles.tabContent} tabLabel="新橋駅発">
+      <BoardingTimer remaining={moment.utc({ year: 1970, second: 52 })} />
       <TimeTable data={timeTableData.stationToHome} />
       <UpdateDate date={momentFromVersion(timeTableData.version)} />
     </View>
@@ -56,8 +57,11 @@ findNextTime(timeTableData.homeToStation);
 */
 
 const styles = StyleSheet.create({
-  tabbar: {
+  tabBar: {
     marginTop: 20,
+  },
+  tabContent: {
+    flex: 1,
   },
 });
 
