@@ -4,6 +4,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import ScrollableTabView from 'react-native-scrollable-tab-view';
 
 import TimeTable from './components/Table';
+import UpdateDate from './components/UpdateDate';
 import BoardingTimer from './components/BoardingTimer';
 import timeTableData from './data/timetable.json';
 
@@ -12,9 +13,11 @@ const App = () => (
     <View key="home" tabLabel="マンション発">
       {/* <BoardingTimer current={new Date()} /> */}
       <TimeTable data={timeTableData.homeToStation} />
+      <UpdateDate date={momentFromVersion(timeTableData.version)} />
     </View>
     <View key="station" tabLabel="新橋駅発">
       <TimeTable data={timeTableData.stationToHome} />
+      <UpdateDate date={momentFromVersion(timeTableData.version)} />
     </View>
   </ScrollableTabView>
 );
@@ -26,6 +29,13 @@ const tabBarStyleProps = {
   tabBarUnderlineStyle: {
     backgroundColor: 'white',
   },
+};
+
+const momentFromVersion = version => {
+  const year = parseInt(version / 10000 % 10000);
+  const month = parseInt(version / 100 % 100) - 1;
+  const day = parseInt(version % 100);
+  return moment({ year, month, day });
 };
 
 /*
