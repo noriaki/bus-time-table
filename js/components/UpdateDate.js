@@ -1,6 +1,6 @@
 import React from 'react';
 import moment from 'moment';
-import { StyleSheet, View, Text, ListView } from 'react-native';
+import { StyleSheet, Text } from 'react-native';
 
 const UpdateDate = ({ date }) => {
   const m = moment(date);

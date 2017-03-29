@@ -28,15 +28,15 @@ const Minutes = ({ minutes }) => (
     renderItem={(minute, i) => (
       <Text style={styles.minuteColumn} key={i}>{minute}</Text>
     )}
-  itemsPerRow={12}
-  data={minutes} />
+    itemsPerRow={12}
+    data={minutes} />
 );
 
 const isEven = num => ((parseInt(num, 10) + 1) % 2 === 0);
-const fill = minutes => [0,5,10,15,20,25,30,35,40,45,50,55].map(
-  num => minutes.includes(num) ? num : null
+const fill = minutes => [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55].map(
+  num => (minutes.includes(num) ? num : null)
 );
-const format = num => num != null ? ('0' + num).slice(-2) : ' ';
+const format = num => (num != null ? (`0${num}`).slice(-2) : ' ');
 
 const styles = StyleSheet.create({
   rowContainer: {
