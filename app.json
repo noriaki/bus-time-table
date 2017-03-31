@@ -5,7 +5,7 @@
     "slug": "bus-time-table-deux-tours",
     "privacy": "unlisted",
     "sdkVersion": "15.0.0",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "orientation": "portrait",
     "primaryColor": "#cccccc",
     "icon": "./assets/icons/app.png",
@@ -16,7 +16,7 @@
     },
     "ios": {
       "bundleIdentifier": "me.noriaki.apps.ios.bus-time-table-deux-tours",
-      "buildNumber": "1",
+      "buildNumber": "2",
       "supportsTablet": false
     }
   }
