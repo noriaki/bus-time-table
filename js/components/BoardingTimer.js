@@ -1,42 +1,35 @@
-import React from 'react';
+import React, { Component } from 'react';
+import TimerMixin from 'react-timer-mixin';
 import moment from 'moment';
-import { StyleSheet, View, Text } from 'react-native';
 
-const BoardingTimer = ({ remaining }) => {
-  const m = moment(remaining);
-  const haveHour = m.valueOf() >= 60 * 60 * 1000;
-  return (
-    <View style={styles.container}>
-      <Text>次のバス発車まで</Text>
-      {haveHour ? <Hour m={m} /> : null}
-      {haveHour ? <Suffix str="時間" /> : null}
-      <Minute m={m} /><Suffix str="分" />
-      <Second m={m} /><Suffix str="秒" />
-    </View>
-  );
+import { findNextTime } from '../libs/timeTableDataHandler';
+import RemainingClock from './RemainingClock';
+
+export default class BoardingTimer extends Component {
+  constructor(props) {
+    super(props);
+    this.state = buildNextState(props.data);
+  }
+
+  componentDidMount() {
+    this.timer = TimerMixin.setInterval(this.handleTick.bind(this), 1000);
+  }
+
+  componentWillUnmount() {
+    TimerMixin.clearTimeout(this.timer);
+  }
+
+  handleTick() {
+    this.setState(buildNextState(this.props.data));
+  }
+
+  render() {
+    const { nextRemaining } = this.state;
+    return <RemainingClock remaining={nextRemaining} />;
+  }
+}
+
+const buildNextState = (timeTableData, currentTime = moment()) => {
+  const nextTime = findNextTime(timeTableData, currentTime);
+  return { nextTime, nextRemaining: nextTime.diff(currentTime) };
 };
-
-const Hour = ({ m }) => <Text style={styles.timer}>{m.format('HH')}</Text>;
-const Minute = ({ m }) => <Text style={styles.timer}>{m.format('mm')}</Text>;
-const Second = ({ m }) => <Text style={styles.timer}>{m.format('ss')}</Text>;
-const Suffix = ({ str }) => <Text style={styles.suffix}>{str}</Text>;
-
-const styles = StyleSheet.create({
-  container: {
-    flexDirection: 'row',
-    flexWrap: 'nowrap',
-    alignItems: 'baseline',
-    justifyContent: 'center',
-    margin: 10,
-  },
-  timer: {
-    fontSize: 25,
-    fontWeight: 'bold',
-    marginLeft: 5,
-  },
-  suffix: {
-    fontSize: 10,
-  },
-});
-
-export default BoardingTimer;
