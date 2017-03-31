@@ -3,6 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
+    "babel-eslint": "^7.2.1",
+    "eslint": "^3.18.0",
+    "eslint-config-airbnb": "^14.1.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^4.0.0",
+    "eslint-plugin-react": "^6.10.3",
     "exp": "^37.0.1",
     "jest-expo": "^0.3.0",
     "react-native-scripts": "0.0.25",
@@ -14,10 +20,13 @@
     "eject": "react-native-scripts eject",
     "android": "react-native-scripts android",
     "ios": "react-native-scripts ios",
-    "test": "node node_modules/jest/bin/jest.js --watch"
+    "test": "node node_modules/jest/bin/jest.js --watch --notify"
   },
   "jest": {
-    "preset": "jest-expo"
+    "preset": "jest-expo",
+    "modulePaths": [
+      "<rootDir>/js/"
+    ]
   },
   "dependencies": {
     "expo": "^15.1.0",
@@ -25,6 +34,7 @@
     "react": "~15.4.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-15.0.0.tar.gz",
     "react-native-grid-component": "^1.0.6",
-    "react-native-scrollable-tab-view": "^0.7.3"
+    "react-native-scrollable-tab-view": "^0.7.3",
+    "react-timer-mixin": "^0.13.3"
   }
 }
