@@ -16,7 +16,7 @@
     },
     "ios": {
       "bundleIdentifier": "me.noriaki.apps.ios.bus-time-table-deux-tours",
-      "buildNumber": "2",
+      "buildNumber": "3",
       "supportsTablet": false
     }
   }
